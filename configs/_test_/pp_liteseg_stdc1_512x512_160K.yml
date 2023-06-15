@@ -24,7 +24,7 @@ train_dataset:
 val_dataset:
   type: Dataset
   dataset_root: data/aeroscapes
-  val_path: data/aeroscapes/ImageSets/val.txt
+  val_path: data/aeroscapes/ImageSets/valset.txt
   num_classes: 12
   mode: val
   transforms:
