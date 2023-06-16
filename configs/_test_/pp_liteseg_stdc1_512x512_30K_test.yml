@@ -3,9 +3,9 @@ iters: 30000
 
 train_dataset:
   type: Dataset
-  dataset_root: data/aeroscapes
-  train_path: data/aeroscapes/ImageSets/trn.txt
-  num_classes: 12
+  dataset_root: data/VDD
+  train_path: data/VDD/metadata/train.txt
+  num_classes: 6
   mode: train
   transforms:
     - type: ResizeStepScaling
@@ -23,9 +23,9 @@ train_dataset:
 
 val_dataset:
   type: Dataset
-  dataset_root: data/aeroscapes
-  val_path: data/aeroscapes/ImageSets/test.txt
-  num_classes: 12
+  dataset_root: data/VDD
+  val_path: data/VDD/metadata/test.txt
+  num_classes: 6
   mode: val
   transforms:
     - type: Normalize
