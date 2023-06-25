@@ -107,11 +107,11 @@ def main():
     study.optimize(train_pplightSeg, n_trials=3)
     # Plot the optimization history
     fig = plot_optimization_history(study)
-    plt.savefig('optimization_history.png')
+    fig.savefig('optimization_history.png')
 
     # Plot a parallel coordinate plot
     fig = plot_parallel_coordinate(study)
-    plt.savefig('parallel_coordinate.png')
+    fig.savefig('parallel_coordinate.png')
 
     best_trial = study.best_trial
 
