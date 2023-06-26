@@ -1,10 +1,10 @@
 batch_size: 16
-iters: 30000
+iters: 10000
 
 train_dataset:
   type: Dataset
   dataset_root: data/aeroscapes
-  train_path: data/aeroscapes/ImageSets/trn.txt
+  train_path: data/aeroscapes/ImageSets/train_paths.txt
   num_classes: 12
   mode: train
   transforms:
@@ -24,7 +24,7 @@ train_dataset:
 val_dataset:
   type: Dataset
   dataset_root: data/aeroscapes
-  val_path: data/aeroscapes/ImageSets/val.txt
+  val_path: data/aeroscapes/ImageSets/validation_paths.txt
   num_classes: 12
   mode: val
   transforms:
