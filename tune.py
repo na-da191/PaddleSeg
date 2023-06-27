@@ -18,7 +18,7 @@ def train_pplightSeg(trial):
     with open(f'pp_liteseg_stdc1_512x512_160K.yml', 'w') as f:
         f.write("""
 batch_size: 16
-iters: 300
+iters: 10000
 train_dataset:
   type: Dataset
   dataset_root: data/aeroscapes
@@ -81,8 +81,7 @@ model:
     os.system(f"python tools/train.py \
         --config /content/PaddleSeg/pp_liteseg_stdc1_512x512_160K.yml\
         --do_eval \
-        --use_vdl \
-        --save_interval 100\
+        --save_interval 1000\
         --save_dir output/Optim/tune_{trial.number}")
 
     evaluation_result = os.popen(f"python tools/val.py \
@@ -102,19 +101,14 @@ model:
 
 def main():
     pruner = optuna.pruners.MedianPruner()
-    study = optuna.create_study(direction='maximize', pruner=pruner, sampler=optuna.samplers.TPESampler(), 
-    storage='sqlite:////content/drive/MyDrive/optim.db', load_if_exists=True)
-    study.optimize(train_pplightSeg, n_trials=3)
-    # Plot the optimization history
-    fig = plot_optimization_history(study)
-    fig.savefig('optimization_history.png')
+    storage_url = "sqlite:////content/drive/MyDrive/PPlite_Optim.db"
+    study_name = "ppliteSegOptim"
 
-    # Plot a parallel coordinate plot
-    fig = plot_parallel_coordinate(study)
-    fig.savefig('parallel_coordinate.png')
+    study =  optuna.create_study(storage=storage_url,study_name=study_name,direction='maximize', pruner=pruner, sampler=optuna.samplers.TPESampler(), load_if_exists=True)
+    study.optimize(train_pplightSeg, n_trials=30)
+
 
     best_trial = study.best_trial
-
     for key, value in best_trial.params.items():
         print("{}: {}".format(key, value))
 
