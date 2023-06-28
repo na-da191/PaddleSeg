@@ -105,7 +105,7 @@ def main():
     study_name = "ppliteSegOptim"
 
     study =  optuna.create_study(storage=storage_url,study_name=study_name,direction='maximize', pruner=pruner, sampler=optuna.samplers.TPESampler(), load_if_exists=True)
-    study.optimize(train_pplightSeg, n_trials=3)
+    study.optimize(train_pplightSeg, n_trials=1)
 
 
     best_trial = study.best_trial
