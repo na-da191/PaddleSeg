@@ -1,5 +1,5 @@
 batch_size: 16
-iters: 140000
+iters: 10000
 
 train_dataset:
   type: Dataset
