@@ -32,7 +32,6 @@ val_dataset:
 
 optimizer:
   type: SGD
-  momentum: 0.9
   weight_decay: 2.2618605764487565e-05
 
 lr_scheduler:
